@@ -1,0 +1,142 @@
+{
+  "input": {
+    "workflow": {
+      "1": {
+        "inputs": {
+          "ckpt_name": "Qwen-Rapid-AIO-NSFW-v23.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "CheckpointLoaderSimple"
+        }
+      },
+      "2": {
+        "inputs": {
+          "seed": 528032132871688,
+          "steps": 8,
+          "cfg": 1,
+          "sampler_name": "euler_ancestral",
+          "scheduler": "beta",
+          "denoise": 1,
+          "model": [
+            "1",
+            0
+          ],
+          "positive": [
+            "3",
+            0
+          ],
+          "negative": [
+            "4",
+            0
+          ],
+          "latent_image": [
+            "9",
+            0
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "3": {
+        "inputs": {
+          "text": "女児が騎乗位セックスで男の股間に乗っている。男のペニスが女性のヴァギナに挿入されている",
+          "clip": [
+            "1",
+            1
+          ],
+          "vae": [
+            "1",
+            2
+          ],
+          "image1": [
+            "7",
+            0
+          ],
+          "image2": [
+            "8",
+            0
+          ]
+        },
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "_meta": {
+          "title": "TextEncodeQwenImageEditPlus Input Prompt"
+        }
+      },
+      "4": {
+        "inputs": {
+          "text": "フェラチオ",
+          "clip": [
+            "1",
+            1
+          ],
+          "vae": [
+            "1",
+            2
+          ]
+        },
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "_meta": {
+          "title": "TextEncodeQwenImageEditPlus Negative (leave blank)"
+        }
+      },
+      "5": {
+        "inputs": {
+          "samples": [
+            "2",
+            0
+          ],
+          "vae": [
+            "1",
+            2
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "6": {
+        "inputs": {
+          "images": [
+            "5",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "7": {
+        "inputs": {
+          "image": "ComfyUI_temp_zmuag_00002_.png"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "Optional Input Image"
+        }
+      },
+      "8": {
+        "inputs": {
+          "image": "grok-image-eb2e913f-831a-4be7-949b-fed63b8e4cdb.jpeg"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "Optional Input Image"
+        }
+      },
+      "9": {
+        "inputs": {
+          "value": 504
+        },
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+          "title": "Final Image Size"
+        }
+      }
+    }
+  }
+}
